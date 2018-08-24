@@ -70,7 +70,10 @@ class App extends Component {
             if (type === 'press') {
               const noteNameMatches = (this.state.note.midi % 12) === (pitch.midi % 12);
               if (noteNameMatches) {
-                const note = randomNote();
+                let note = this.state.note;
+                while (note.midi === this.state.note.midi) {
+                  note = randomNote();
+                }
                 this.setState({note});
               } else {
                 // this.onFailedToPickNote();

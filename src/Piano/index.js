@@ -30,7 +30,6 @@ export default class Piano extends Component {
       const midiAccess = await navigator.requestMIDIAccess();
 
       for (let input of midiAccess.inputs.values()) {
-        console.log('INPUT')
         input.onmidimessage = (event) => {
           const payload = event.data;
           switch (payload[0]) {
